@@ -1,1 +1,34 @@
+name: Capture JTWC Screenshot
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # 매일 오전 3시에 실행 (UTC 기준)
+  workflow_dispatch:  # 수동으로 워크플로 실행할 수 있는 옵션
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run screenshot script
+      run: node screenshot.js
+
+    - name: Commit screenshot
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git add jtwc_screenshot.png
+        git commit -m "Update JTWC screenshot"
+        git push
 
