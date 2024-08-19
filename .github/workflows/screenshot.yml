@@ -11,12 +11,12 @@ jobs:
 
     steps:
     - name: Check out repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3  # 최신 버전으로 업데이트
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3  # 최신 버전으로 업데이트
       with:
-        node-version: '14'
+        node-version: '16'  # 최신 LTS 버전 사용
 
     - name: Install dependencies
       run: npm install
@@ -31,4 +31,3 @@ jobs:
         git add jtwc_screenshot.png
         git commit -m "Update JTWC screenshot"
         git push
-
