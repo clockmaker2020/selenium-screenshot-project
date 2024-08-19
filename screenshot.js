@@ -2,8 +2,16 @@ const { Builder, By } = require('selenium-webdriver');
 const fs = require('fs');
 
 (async function captureScreenshot() {
+    // ChromeOptions 설정: 헤드리스 모드로 실행
+    let chrome = require('selenium-webdriver/chrome');
+    let options = new chrome.Options();
+    options.addArguments('headless');  // 헤드리스 모드
+    options.addArguments('disable-gpu');  // GPU 사용 안 함 (헤드리스 모드에서 권장)
+    options.addArguments('no-sandbox');  // 샌드박스 비활성화 (CI 환경에서 권장)
+    options.addArguments('disable-dev-shm-usage');  // /dev/shm 사용 비활성화 (CI 환경에서 메모리 문제 방지)
+
     // 브라우저를 시작합니다 (여기서는 Chrome을 사용).
-    let driver = await new Builder().forBrowser('chrome').build();
+    let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
     try {
         // 특정 웹페이지로 이동합니다.
