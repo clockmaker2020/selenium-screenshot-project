@@ -30,4 +30,7 @@ jobs:
         git config --local user.name "GitHub Actions"
         git add jtwc_screenshot.png
         git commit -m "Update JTWC screenshot"
-        git push
+        git push https://$PAT@github.com/clockmaker2020/selenium-screenshot-project.git
+      env:
+        PAT: ${{ secrets.PAT }}
+
