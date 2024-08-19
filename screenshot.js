@@ -20,6 +20,7 @@ const fs = require('fs');
         console.log('스크린샷이 성공적으로 저장되었습니다!');
     } catch (error) {
         console.error('오류 발생:', error);
+        process.exit(1); // 오류 발생 시 프로세스 종료
     } finally {
         // 브라우저를 닫습니다.
         await driver.quit();
