@@ -15,7 +15,7 @@ async function takeScreenshot() {
 
     try {
         // 화면 크기 설정 (예: 1920x1080)
-        await driver.manage().window().setRect({ width: 1920, height: 1080 });
+        await driver.manage().window().setRect({ width: 1024, height: 768 });
 
         // 중국 기상청 사이트로 URL 변경
         await driver.get('https://typhoon.weather.com.cn/');
