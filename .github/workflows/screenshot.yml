@@ -37,7 +37,7 @@ jobs:
       run: |
         git config --local user.email "actions@github.com"
         git config --local user.name "GitHub Actions"
-        git add tw_screenshot.png cn_screenshot.png ph_screenshot.png us_screenshot.png
+        git add tw_screenshot.png cn_screenshot.png ph_screenshot.png hk_screenshot.png
         git commit -m "Update weather screenshots"
         git push https://$GITHUB_TOKEN@github.com/clockmaker2020/selenium-screenshot-project.git
       env:
