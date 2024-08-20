@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3  # 최신 버전으로 업데이트
       with:
-        node-version: '16'  # 최신 LTS 버전 사용
+        node-version: '18'  # 최신 LTS 버전 사용
 
     - name: Install dependencies
       run: npm install
