@@ -30,8 +30,8 @@ jobs:
     - name: Run PH screenshot script
       run: node ph_screenshot.js
 
-    - name: Run US screenshot script
-      run: node us_screenshot.js
+    - name: Run HK screenshot script
+      run: node hk_screenshot.js
 
     - name: Commit screenshots
       run: |
