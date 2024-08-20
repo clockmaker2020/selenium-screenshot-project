@@ -30,6 +30,4 @@ jobs:
         git config --local user.name "GitHub Actions"
         git add hk_screenshot.png
         git commit -m "Update HK screenshot"
-        git push https://$GITHUB_TOKEN@github.com/clockmaker2020/selenium-screenshot-project.git
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/clockmaker2020/selenium-screenshot-project.git
