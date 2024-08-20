@@ -1,4 +1,4 @@
-name: Capture JTWC Screenshot
+name: Capture HK Screenshot
 
 on:
   schedule:
@@ -22,15 +22,14 @@ jobs:
       run: npm install
 
     - name: Run screenshot script
-      run: node screenshot.js
+      run: node hk_screenshot.js
 
     - name: Commit screenshot
       run: |
         git config --local user.email "actions@github.com"
         git config --local user.name "GitHub Actions"
-        git add jtwc_screenshot.png
-        git commit -m "Update JTWC screenshot"
+        git add hk_screenshot.png
+        git commit -m "Update HK screenshot"
         git push https://$PAT@github.com/clockmaker2020/selenium-screenshot-project.git
       env:
         PAT: ${{ secrets.PAT }}
-
