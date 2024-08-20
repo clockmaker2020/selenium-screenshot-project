@@ -1,8 +1,8 @@
-name: Capture HK Screenshot
+name: Capture Weather Screenshots
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # 매일 오전 3시에 실행 (UTC 기준)
+    - cron: '0 * * * *'  # 매 시간 정각에 실행
   workflow_dispatch:  # 수동으로 워크플로 실행할 수 있는 옵션
 
 jobs:
@@ -11,23 +11,34 @@ jobs:
 
     steps:
     - name: Check out repository
-      uses: actions/checkout@v3  # 최신 버전으로 업데이트
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3  # 최신 버전으로 업데이트
+      uses: actions/setup-node@v3
       with:
-        node-version: '18'  # 최신 LTS 버전 사용
+        node-version: '18'
 
     - name: Install dependencies
       run: npm install
 
-    - name: Run screenshot script
-      run: node hk_screenshot.js
+    - name: Run TW screenshot script
+      run: node tw_screenshot.js
 
-    - name: Commit screenshot
+    - name: Run CN screenshot script
+      run: node cn_screenshot.js
+
+    - name: Run PH screenshot script
+      run: node ph_screenshot.js
+
+    - name: Run US screenshot script
+      run: node us_screenshot.js
+
+    - name: Commit screenshots
       run: |
         git config --local user.email "actions@github.com"
         git config --local user.name "GitHub Actions"
-        git add hk_screenshot.png
-        git commit -m "Update HK screenshot"
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/clockmaker2020/selenium-screenshot-project.git
+        git add tw_screenshot.png cn_screenshot.png ph_screenshot.png us_screenshot.png
+        git commit -m "Update weather screenshots"
+        git push https://$GITHUB_TOKEN@github.com/clockmaker2020/selenium-screenshot-project.git
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
