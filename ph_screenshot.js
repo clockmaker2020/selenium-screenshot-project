@@ -14,6 +14,13 @@ async function takeScreenshot() {
         .build();
 
     try {
+        // 타임아웃 설정
+        await driver.manage().setTimeouts({ 
+            implicit: 10000, // 요소를 찾을 때 최대 대기 시간 (10초)
+            pageLoad: 60000,  // 페이지 로드 최대 대기 시간 (60초)
+            script: 30000     // 스크립트 실행 최대 대기 시간 (30초)
+        });
+
         // 화면 크기 설정 (예: 1920x1080)
         await driver.manage().window().setRect({ width: 1920, height: 1080 });
 
