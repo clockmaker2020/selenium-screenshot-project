@@ -2,7 +2,7 @@ name: Capture Weather Screenshots
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # 매 30분마다 실행
+    - cron: '0 * * * *'  # 매 정시마다 실행 (매 1시간 간격)
   workflow_dispatch:  # 수동으로 워크플로 실행할 수 있는 옵션
 
 jobs:
